@@ -5,6 +5,19 @@ T-Clock Redux
 **T-Clock Redux** is an enhanced fork of [Stoic Joker's T-Clock 2010](http://www.stoicjoker.com/TClock/)  
 with ISO week number support, bug fixes and the ability to use Windows' default calendar and tooltips.
 
+### Custom format literals
+Use square brackets to select an IANA timezone in a custom format, e.g. `[Europe/Berlin]`
+or `[America/New_York]`. The selector applies to all following format text until another
+selector is used. `ZZ` prints the selected UTC offset. Supported names cover every
+IANA identifier with a corresponding Windows time zone (~430 zones/aliases, generated
+from the CLDR `windowsZones.xml` mapping), so most city and region names work as
+expected. For example, this displays Los Angeles and Tokyo times on separate lines:
+
+`"Los Angeles "[America/Los_Angeles]HH:nn ZZ\n"Tokyo "[Asia/Tokyo]HH:nn ZZ`
+
+Unknown bracketed text remains a literal. Existing double-quoted literals remain
+supported.
+
 T-Clock *(called TClock)*, originally written by Kazubon in the early 90's, was a popular classic that was on the edge of extinction when Windows started going 64bit. ... Stoic Joker simply chose not to let that happen. And now it's up to us to continue their efforts.
 
 If you don't mind to read lots of text, and want to know more about T-Clock and its history: [check this page out!](http://web.archive.org/web/20160202023839/http://greggdeselms.com/tclock.html) *(thanks Gregg)*
@@ -49,7 +62,7 @@ If you don't mind to read lots of text, and want to know more about T-Clock and 
 - [ ] + enhanced time format editor incl. realtime preview *tbd*
 - [ ] + ability to use different timezones on modifiers *tbd*
 - [ ] + LClock formating options such as different fonts and positions for time and date *tbd*
-- [ ] + working timezone identifiers *tbd*
+- [x] + working timezone identifiers *(IANA names in custom format via `[Zone]`)*
 - [ ] + multilingual version? *tbd*
 - [ ] + resource usage % format option (CPU,RAM maybe GPU) *tbd*
 - [ ] + improved time synchronization incl. autorun at startup (requires admin rights for "install") *tbd*
